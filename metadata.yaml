@@ -1,0 +1,7 @@
+name: wordpress-hhvm
+summary: |
+  Wordpress on HHVM
+description: |
+  Wordpress on HHVM
+maintainers: ['Adam Stokes <adam.stokes@ubuntu.com>']
+tags: ['php', 'blog']

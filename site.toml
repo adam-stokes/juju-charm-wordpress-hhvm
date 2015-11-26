@@ -1,0 +1,3 @@
+"server_name" = "_"
+"app_path" = "/srv/wordpress"
+"packages" = ["unzip"]
