@@ -15,13 +15,13 @@ def download_archive():
     app_path = get_app_path()
 
     config = hookenv.config()
-    shell('rm /tmp/wordpress.zip || true')
-    cmd = ('wget -q -O /tmp/wordpress.zip '
+    shell('rm /tmp/wordpress.tgz || true')
+    cmd = ('wget -q -O /tmp/wordpress.tgz '
            'http://wordpress.org/latest.tar.gz')
     hookenv.log("Downloading Wordpress: {}".format(cmd))
     shell(cmd)
 
-    with open('/tmp/wordpress.zip', 'rb') as fp:
+    with open('/tmp/wordpress.tgz', 'rb') as fp:
         dl_byte = sha256(fp.read())
         if dl_byte.hexdigest() != config['checksum']:
             hookenv.status_set(
@@ -35,7 +35,7 @@ def download_archive():
         rmtree(app_path)
     makedirs(app_path)
 
-    cmd = ('unzip -uo /tmp/wordpress.zip -d {}'.format(
+    cmd = ('tar -xf /tmp/wordpress.tgz --strip-components=1 -C {}'.format(
         app_path
     ))
     hookenv.log("Extracting Wordpress: {}".format(cmd))
