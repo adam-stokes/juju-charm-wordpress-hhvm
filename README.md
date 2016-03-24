@@ -2,6 +2,62 @@
 
 Wordpress on HHVM
 
+# Install
+
+## Setup juju environment
+
+Edit ```~/.juju/environments.yaml``` 
+
+Than do
+
+```
+$ juju bootstrap
+```
+
+
+Folow  [this](https://jujucharms.com/juju-gui/) instructions to start JuJu GUI
+Run 
+```
+juju deploy juju-gui --to 0
+juju expose juju-gui
+```
+Use ```juju stat``` to find juju-gui address
+
+## Building juju-charm-wordpress-hhvm 
+
+Edit ```site.toml``` add your configuration options.
+Go to folder conteining this charm and run.
+
+```
+$ juju charm build 
+```
+This will create a subfolder ```trusty``` conteining ready ```wordpress-hhvm``` charm
+
+## Deploying wordpress-hhvm Charm
+
+Open directory containing this charm and run
+
+```
+$ juju deploy --repository=$(pwd) local:trusty/wordpress-hhvm --to 0
+```
+
+> NOTICE: Add ```--to 0``` to deploy on same machine
+
+
+Monitor the status of ```wordpress-hhvm/0``` unit
+
+```
+$ juju stat
+```
+
+To get access to pintostack context use
+
+```
+$ juju ssh wordpress-hhvm/0
+```
+
+
+
 # License
 
 The MIT License (MIT)
