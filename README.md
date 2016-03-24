@@ -4,6 +4,10 @@ Wordpress on HHVM
 
 # Install
 
+## Requirments
+ * [juju-layer-hhvm](https://github.com/battlemidget/juju-layer-hhvm)
+ * [juju-layer-nginx](https://github.com/battlemidget/juju-layer-nginx)
+
 ## Setup juju environment
 
 Edit ```~/.juju/environments.yaml``` 
